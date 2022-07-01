@@ -122,3 +122,40 @@ h1 {
 .label-score {
   margin-bottom: 2rem;
 }
+@media (max-width: 768px) {
+  .between {
+    font-size: 10px;
+    top: 2rem;
+    right: 1rem;
+  }
+  .btn {
+    font-size: 10px;
+    padding: 1rem 3rem;
+    cursor: pointer;
+  }
+  .guess {
+    font-size: 1rem;
+    padding: 2.5rem;
+    width: 20rem;
+  }
+  /* main {
+    margin-top: 2rem;
+    display: block;
+  } */
+  .right {
+    width: 30rem;
+    font-size: 10px;
+    margin-left: 20px;
+  }
+  .message {
+    height: 5px;
+    width: fit-content;
+    margin-bottom: 40px;
+  }
+  .left {
+    width: 30rem;
+  }
+  .label-score {
+    margin-bottom: 20px;
+  }
+}
