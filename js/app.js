@@ -8,8 +8,9 @@ const scores = document.querySelector('.score');
 const highScore = document.querySelector('.highscore');
 const body = document.querySelector('body');
 
-const number = Math.trunc(Math.random() * 20) + 1;
+let number = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
+let numberScore = 0;
 
 const guessBox = function () {
   console.log(Number(guess.value));
@@ -25,6 +26,10 @@ const guessBox = function () {
       body.style.backgroundColor = 'green';
       highScore.textContent = score;
       numberBox.style.width = '30rem';
+      if (score > numberScore) {
+        numberScore = score;
+        highScore.textContent = numberScore;
+      }
     } else if (guess.value > number) {
       message.textContent = 'Too high try again 😐!!!!!';
       body.style.backgroundColor = '#F7A150';
@@ -44,7 +49,14 @@ const guessBox = function () {
   }
 };
 check.addEventListener('click', guessBox);
-const restart = function () {
-  location.reload();
-};
-again.addEventListener('click', restart);
+again.addEventListener('click', function () {
+  score = 20;
+  number = Math.trunc(Math.random() * 20) + 1;
+  message.textContent = '🤔 Start guessing...';
+  scores.textContent = score;
+  numberBox.textContent = '?';
+  guess.value = '';
+  body.style.backgroundColor = 'rgb(2, 0, 36)';
+  numberBox.style.width = '15rem';
+});
+console.log(again);
