@@ -17,7 +17,6 @@ body {
   background: rgb(2, 0, 36);
 }
 
-/* LAYOUT */
 header {
   position: relative;
   height: 35vh;
@@ -43,8 +42,6 @@ main {
   width: 52rem;
   font-size: 2rem;
 }
-
-/* ELEMENTS STYLE */
 h1 {
   font-size: 4rem;
   text-align: center;
@@ -138,10 +135,6 @@ h1 {
     padding: 2.5rem;
     width: 20rem;
   }
-  /* main {
-    margin-top: 2rem;
-    display: block;
-  } */
   .right {
     width: 30rem;
     font-size: 10px;
