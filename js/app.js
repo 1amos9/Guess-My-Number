@@ -7,13 +7,38 @@ const check = document.querySelector('.check');
 const scores = document.querySelector('.score');
 const highScore = document.querySelector('.highscore');
 const body = document.querySelector('body');
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const overlayP = document.querySelector('.overlayp');
+const close = document.querySelector('.close-modal');
+const closer = document.querySelector('.close-lost');
+const description = document.querySelector('.description-game');
+const lost = document.querySelector('.lost');
 
 let number = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let numberScore = 0;
 
+const showModal = () => {
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+const closeModal = () => {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+const closeLost = () => {
+  lost.classList.add('hidden');
+  overlay.classList.add('hidden');
+};
+const looser = () => {
+  lost.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+};
+
 const guessBox = function () {
   console.log(Number(guess.value));
+
   if (!guess.value) {
     message.textContent = 'no number 😒!!!!!';
   } else if (guess.value == 0 || guess.value > 20) {
@@ -21,10 +46,13 @@ const guessBox = function () {
     body.style.backgroundColor = 'brown';
   } else if (score > 1) {
     if (guess.value == number) {
+      showModal();
+      overlay.addEventListener('click', closeModal);
+      close.addEventListener('click', closeModal);
       message.textContent = '🎉🎉 correct number🏆!!!!!';
       numberBox.textContent = number;
       body.style.backgroundColor = 'green';
-      highScore.textContent = score;
+      highScore.textContent = score + score;
       numberBox.style.width = '30rem';
       if (score > numberScore) {
         numberScore = score;
@@ -46,6 +74,9 @@ const guessBox = function () {
     message.textContent = '😭 YOU LOST THE GAME!!!';
     score = 0;
     scores.textContent = score;
+    looser();
+    overlay.addEventListener('click', closeLost);
+    closer.addEventListener('click', closeLost);
   }
 };
 check.addEventListener('click', guessBox);
@@ -60,3 +91,11 @@ again.addEventListener('click', function () {
   numberBox.style.width = '15rem';
 });
 console.log(again);
+window.addEventListener('load', () => {
+  description.classList.remove('hidden');
+  overlayP.classList.remove('hidden');
+});
+window.addEventListener('click', () => {
+  description.classList.add('hidden');
+  overlayP.classList.add('hidden');
+});
